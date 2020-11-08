@@ -1,0 +1,24 @@
+name: guess-me-build
+on:
+  push:
+    branches:
+      - master
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup Go
+        uses: actions/setup-go@v2
+        with:
+          go-version: `1.15.3`
+      - name: Install dependencies
+        run: |
+          go version
+          go get -u golang.org/x/lint/golint
+      - name: Run build
+        run: go build .
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v1
+        with:
+          name: workshop-go-guess-me
