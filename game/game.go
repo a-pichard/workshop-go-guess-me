@@ -30,7 +30,7 @@ func inGameConditionNmber(nb int) bool {
 func InitGame() GameParameters {
 	mainLimits := limit.Limit{
 		Lower:  0,
-		Higher: util.ReadInt("Lower limit is 0, choose you're upper limit: ", initConditionNumber),
+		Higher: util.ReadInt("Lower limit is 0, choose your upper limit: ", initConditionNumber),
 	}
 	fmt.Printf("Limits defined to -> %s.\n", mainLimits)
 	numberToFind := getRandomNumber(mainLimits)
