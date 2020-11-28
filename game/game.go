@@ -43,7 +43,7 @@ func InitGame() GameParameters {
 }
 
 func (params *GameParameters) StartGame() {
-	var guess int
+	guess := -1
 	for guess != params.random {
 		params.loop++
 		guess = util.ReadInt("Make your guess: ", inGameConditionNmber)
@@ -58,5 +58,9 @@ func (params *GameParameters) StartGame() {
 func (params *GameParameters) Result() {
 	fmt.Println("HIT !")
 	fmt.Printf("The limits were -> %s\n", params.mainLimit)
-	fmt.Printf("You found %d in %d tries.\n", params.random, params.loop)
+	if params.loop == 1 {
+		fmt.Printf("You found %d in 1 try\n", params.random)
+	} else {
+		fmt.Printf("You found %d in %d tries\n", params.random, params.loop)
+	}
 }
